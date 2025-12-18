@@ -1,0 +1,44 @@
+# 教育和工作经历数据文件
+# 格式说明：
+# - start_date: 开始日期（格式：YYYY.MM）
+# - end_date: 结束日期（格式：YYYY.MM 或 "present"）
+# - role: 角色/职位/学位
+# - affiliation: 机构/组织/组名
+# - advisors: 导师列表（可选，每个包含 name 和 url）
+
+- start_date: "2022.04"
+  end_date: "present"
+  role: "Ph.D. Student"
+  affiliation: "School of Computer Science, Northwestern Polytechnical University"
+  advisors:
+    - name: "Prof. Zhen Wang"
+      url: "https://iopen.nwpu.edu.cn/info/1329/1369.htm"
+
+- start_date: "2021.06"
+  end_date: "present"
+  role: "Visiting Student"
+  affiliation: "LARS Group, Tsinghua University"
+  advisors:
+    - name: "Prof. Quanming Yao"
+      url: "https://lars-group.github.io/"
+
+- start_date: "2024.09"
+  end_date: "2025.08"
+  role: "Algorithm Intern"
+  affiliation: "Dianping, Meituan"
+  advisors:
+    - name: "Fei Xiong"
+      url: ""
+
+- start_date: "2019.07"
+  end_date: "2022.03"
+  role: "M.S. student"
+  affiliation: "School of Mechanical Engineering, Northwestern Polytechnical University"
+  advisors: []
+
+- start_date: "2015.09"
+  end_date: "2019.06"
+  role: "B.E. student"
+  affiliation: "School of Computer Science, Northwestern Polytechnical University"
+  advisors: []
+

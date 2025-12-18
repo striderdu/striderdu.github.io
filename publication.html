@@ -1,0 +1,108 @@
+---
+layout: default
+custom_style: |
+  hr{
+    height: 1px;
+    background-color:grey;
+  }
+  /* img {
+    width: 100%;
+    max-height: 60px;
+    PADDING-RIGHT:5px;
+    PADDING-LEFT:5px;
+  } */
+  /* .imgTab {
+    width: 12%;    
+  } */
+  .pubTab {
+    width: 88%;
+    text-align: left;
+    padding-left: 10px;
+    vertical-align: top;
+  }
+  .abTab {
+    width: 180px;
+    min-width: 180px;
+    max-width: 180px;
+    vertical-align: top;
+  }
+  .authorInfo {
+    color: black; 
+  }
+  .authorInfo u {
+    font-weight: bold;
+  }
+  .venueInfo{
+  }
+custom_script: |
+  var allTypes = new Array('machine-learning', 'data-mining')
+  function showAllPublication() {
+    $(".publication").show("slow");
+  }
+  function showContentWithType(typeName) {
+    $(".publication").hide("slow");
+    $("." + typeName).show("slow");
+  }
+---
+
+<div class="container w">
+  <div class="row centered">
+    <!-- Filters -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <ul class="nav nav-pills" role="tablist">
+          <h4>Filters:</h4>
+          <li role="presentation" class="dropdown active">
+            <a class="dropdown-toggle" onclick="javascript:showAllPublication();" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">All 
+            <span class="badge">{{ site.data.publications.size }}</span></a>
+            <ul class="dropdown-menu">
+              <li><a href="https://scholar.google.com/citations?hl=en&user=R25rbyQAAAAJ">Google Scholar (citations)</a></li>
+              <li><a href="https://dblp.uni-trier.de/pers/hd/p/Peng:Hao">DBLP</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" onclick="javascript:showContentWithType('2017'); javascript:showAllPublication();" aria-haspopup="true" aria-expanded="true">By Year<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              {% assign years = site.data.publications | group_by: "year" | sort: "name" | reverse %}
+              {% for year_group in years %}
+                <li><a href="javascript:showContentWithType('{{ year_group.name }}');">{{ year_group.name }} <span class="badge">{{ year_group.items.size }}</span></a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="javascript:showContentWithType('conference');" role="button" aria-haspopup="true" aria-expanded="true">By Type <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              {% assign journals = site.data.publications | where: "type", "journal" %}
+              {% assign conferences = site.data.publications | where: "type", "conference" %}
+              {% assign patents = site.data.publications | where: "type", "patent" %}
+              <li><a href="javascript:showContentWithType('journal');"> Journal <span class="badge">{{ journals.size }}</span></a></li>
+              <li><a href="javascript:showContentWithType('conference');"> Conference <span class="badge">{{ conferences.size }}</span></a></li>
+              <li><a href="javascript:showContentWithType('patent');">Patent <span class="badge">{{ patents.size }}</span></a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="javascript:showContentWithType('conference');" role="button" aria-haspopup="true" aria-expanded="true">By Conference <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              {% assign conferences = site.data.publications | where: "type", "conference" | group_by: "venue" | sort: "name" %}
+              {% for conf_group in conferences %}
+                <li><a href="javascript:showContentWithType('{{ conf_group.name }}');">{{ conf_group.name }} <span class="badge">{{ conf_group.items.size }}</span></a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="javascript:showContentWithType('journal');" role="button" aria-haspopup="true" aria-expanded="true">By Journal <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              {% assign journals = site.data.publications | where: "type", "journal" | group_by: "venue" | sort: "name" %}
+              {% for journal_group in journals %}
+                <li><a href="javascript:showContentWithType('{{ journal_group.name }}');">{{ journal_group.name }} <span class="badge">{{ journal_group.items.size }}</span></a></li>
+              {% endfor %}
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="panel-body">
+        {% include publications_list.html %}
+      </div>
+    </div>
+  </div>
+</div>

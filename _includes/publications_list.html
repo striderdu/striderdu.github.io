@@ -1,0 +1,53 @@
+{% comment %}
+  论文列表模板
+  根据年份分组显示论文
+{% endcomment %}
+
+{% assign years = site.data.publications | group_by: "year" | sort: "name" | reverse %}
+
+{% for year_group in years %}
+  <h3>{{ year_group.name }}</h3>
+  <ul class="list-group">
+    {% for pub in year_group.items %}
+      <li class="list-group-item {{ pub.type }} publication {{ pub.year }} {{ pub.type }} {{ pub.venue }} {% for tag in pub.tags %}{{ tag }} {% endfor %}">
+        <table style="width: 100%">
+          <tbody>
+            <tr>
+              <td class="abTab">
+                <div class="venueInfo">{{ pub.venue_short }}</div>
+              </td>
+              {% comment %}
+              <td class="imgTab">
+                {% if pub.image %}
+                  <div><img src="{{ '/figures/' | append: pub.image | relative_url }}" alt="{{ pub.title }}"></div>
+                {% endif %}
+              </td>
+              {% endcomment %}
+              <td class="pubTab">
+                <b>
+                  {% if pub.pdf %}
+                    {% if pub.pdf contains 'http://' or pub.pdf contains 'https://' %}
+                      <a href="{{ pub.pdf }}" target="_blank">{{ pub.title }}</a>
+                    {% else %}
+                      <a href="{{ '/papers/' | append: pub.pdf | relative_url }}">{{ pub.title }}</a>
+                    {% endif %}
+                  {% else %}
+                    {{ pub.title }}
+                  {% endif %}
+                </b>
+                <div>
+                  <span class="authorInfo">{{ pub.authors }}</span><br>
+                  <span class="venueInfo">{{ pub.venue_full }}</span>
+                  {% if pub.code %}
+                    <br><a href="{{ pub.code }}" target="_blank" style="color: #337ab7;">[Code]</a>
+                  {% endif %}
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    {% endfor %}
+  </ul>
+{% endfor %}
+

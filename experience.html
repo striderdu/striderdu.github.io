@@ -1,0 +1,96 @@
+---
+layout: default
+custom_style: |
+  .experience-section {
+    padding-top: 20px;
+  }
+  .experience-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
+  }
+  .experience-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  .experience-item {
+    margin-bottom: 20px;
+    padding-left: 20px;
+    position: relative;
+  }
+  .experience-item::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #666;
+    font-size: 1.2em;
+  }
+  .experience-date {
+    font-weight: 500;
+    color: #333;
+  }
+  .experience-date .present {
+    font-style: italic;
+  }
+  .experience-role {
+    font-weight: 500;
+    color: #333;
+  }
+  .experience-affiliation {
+    color: #555;
+  }
+  .experience-advisors {
+    color: #555;
+    margin-top: 2px;
+  }
+  .experience-advisors a {
+    color: #337ab7;
+    text-decoration: underline;
+  }
+---
+
+<div class="container w">
+  <div class="row centered">
+    <div class="col-xs-12 col-md-10 col-md-offset-1">
+      <div class="experience-section">
+        <div class="experience-title">
+          <i class="fas fa-graduation-cap" style="font-size: 1.5em; color: #2c3e50; margin-right: 12px;"></i>
+          <h2 style="margin: 0;">Education and Experience</h2>
+        </div>
+        
+        <ul class="experience-list">
+          {% for exp in site.data.experience %}
+            <li class="experience-item">
+              <div class="experience-date">
+                {{ exp.start_date }} - 
+                {% if exp.end_date == "present" %}
+                  <span class="present">present</span>
+                {% else %}
+                  {{ exp.end_date }}
+                {% endif %}
+              </div>
+              <div class="experience-role">{{ exp.role }}</div>
+              <div class="experience-affiliation">{{ exp.affiliation }}</div>
+              {% if exp.advisors and exp.advisors.size > 0 %}
+                <div class="experience-advisors">
+                  advised by 
+                  {% for advisor in exp.advisors %}
+                    {% if forloop.first == false %}{% if forloop.last %} and {% else %}, {% endif %}{% endif %}
+                    {% if advisor.url and advisor.url != "" %}
+                      <a href="{{ advisor.url }}" target="_blank">{{ advisor.name }}</a>
+                    {% else %}
+                      {{ advisor.name }}
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+

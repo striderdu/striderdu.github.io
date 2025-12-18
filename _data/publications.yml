@@ -1,0 +1,173 @@
+# 论文数据文件
+# 格式说明：
+# - year: 发表年份
+# - type: 类型 (journal/conference/patent)
+# - venue: 会议/期刊名称（用于分类）
+# - venue_short: 会议/期刊简称（显示在列表中）
+# - venue_full: 会议/期刊全称（显示在论文信息中）
+# - title: 论文标题
+# - authors: 作者列表（用 <u>标签标记自己）
+# - pdf: PDF文件路径（相对于papers目录）或外部链接（以http://或https://开头）
+# - code: 代码链接（外部链接，可选）
+# - image: 图片路径（相对于figures目录）
+# - tags: 分类标签数组（用于筛选，如年份、类型、会议名等）
+
+
+- year: 2026
+  type: conference
+  venue: AAAI
+  venue_short: "[AAAI]"
+  venue_full: "AAAI '26: Association for the Advancement of Artificial Intelligence"
+  title: "RABot: Reinforcement-Guided Graph Augmentation for Imbalanced and Noisy Social Bot Detection"
+  authors: "L. Zhang, X. Wang, <u>H. Du</u>, X. Yang, Z. Liu and Y. Liu*"
+  pdf: ""
+  # image: ""
+  tags:
+    - "2026"
+    - "conference"
+    - "AAAI"
+
+- year: 2025
+  type: conference
+  venue: KDD
+  venue_short: "[KDD]"
+  venue_full: "KDD '25: ACM SIGKDD Conference on Knowledge Discovery and Data Mining"
+  title: "PERSCEN: Learning Personalized Interaction Pattern and Scenario Preference for Multi-Scenario Matching"
+  authors: "<u>H. Du</u>, Y. Wang*, F. Xiong, L. Shao, M. Liu, H. Gu, Q. Yao and Z. Wang*"
+  pdf: "https://dl.acm.org/doi/10.1145/3711896.3737079"
+  code: "https://github.com/LARS-research/PERSCEN"
+  # image: ""
+  tags:
+    - "2025"
+    - "conference"
+    - "KDD"
+
+- year: 2025
+  type: journal
+  venue: Neurocomputing
+  venue_short: "[Neurocomputing]"
+  venue_full: "Neurocomputing"
+  title: "Search to Integrate Multi-level Heuristics with Graph Neural Networks for Multi-relational Link Prediction"
+  authors: "J. Wu, <u>H. Du</u>, H. Xu, X. Li, C. Gao* and Z. Wang"
+  pdf: "https://www.sciencedirect.com/science/article/pii/S0925231225014481"
+  code: "https://github.com/cgao-comp/S2I"
+  # image: ""
+  tags:
+    - "2025"
+    - "journal"
+    - "Neurocomputing"
+
+- year: 2025
+  type: conference
+  venue: CIKM
+  venue_short: "[CIKM]"
+  venue_full: "CIKM '25: ACM International Conference on Information and Knowledge Management"
+  title: "Enhancing Information Diffusion Prediction via Multiple Granularity Hypergraphs and Position-aware Sequence Model"
+  authors: "W. Jing, Y. Wang, <u>H. Du</u>, S. Wang, X. Li and C. Gao*"
+  pdf: "https://dl.acm.org/doi/10.1145/3746252.3761259"
+  # image: ""
+  tags:
+    - "2025"
+    - "conference"
+    - "CIKM"
+
+- year: 2025
+  type: conference
+  venue: CIKM
+  venue_short: "[CIKM]"
+  venue_full: "CIKM '25: ACM International Conference on Information and Knowledge Management"
+  title: "CAGCL: A Community-Aware Graph Contrastive Learning Model for Social Bot Detection"
+  authors: "K. Wei, M. Teng, <u>H. Du</u>, S. Wang, J. Zhao, C. Gao*"
+  pdf: "https://dl.acm.org/doi/abs/10.1145/3746252.3761411"
+  # image: ""
+  tags:
+    - "2025"
+    - "conference"
+    - "CIKM"
+
+- year: 2025
+  type: conference
+  venue: CIKM
+  venue_short: "[CIKM]"
+  venue_full: "CIKM '25: ACM International Conference on Information and Knowledge Management"
+  title: "MFAE: Multimodal Feature Adaptive Enhancement for Fake News Video Detection"
+  authors: "W. Wang, M. Li, J. Qiao, <u>H. Du</u>, X. Li, C. Gao* and Z. Wang"
+  pdf: "https://dl.acm.org/doi/10.1145/3746252.3761344"
+  # image: ""
+  tags:
+    - "2025"
+    - "conference"
+    - "CIKM"
+
+- year: 2025
+  type: conference
+  venue: ICSI
+  venue_short: "[ICSI]"
+  venue_full: "International Conference on Swarm Intelligence (ICSI 2025)"
+  title: "Incremental Update Strategy for Continuous Action Iterated Hierarchical Dilemma"
+  authors: "Q. Dong, T. Zhang*, X. Jin, <u>H. Du</u> and D. Yu*"
+  pdf: "https://link.springer.com/chapter/10.1007/978-981-95-0985-0_23"
+  # image: ""
+  tags:
+    - "2025"
+    - "conference"
+    - "Swarm Intelligence"
+
+- year: 2024
+  type: conference
+  venue: NeurIPS
+  venue_short: "[NeurIPS]"
+  venue_full: "Advances in Neural Information Processing Systems 37 (NeurIPS 2024)"
+  title: "Customized Subgraph Selection and Encoding for Drug-drug Interaction Prediction"
+  authors: "<u>H. Du</u>, Q. Yao, J. Zhang, Y. Liu and Z. Wang"
+  pdf: "https://proceedings.neurips.cc/paper_files/paper/2024/hash/c5e7867ce0baf950b53f0879af369599-Abstract-Conference.html"
+  code: "https://github.com/LARS-research/CSSE-DDI"
+  # image: ""
+  tags:
+    - "2024"
+    - "conference"
+    - "NeurIPS"
+
+- year: 2024
+  type: conference
+  venue: DASFAA
+  venue_short: "[DASFAA]"
+  venue_full: "International Conference on Database Systems for Advanced Applications (DASFAA 2024)"
+  title: "Relation-Entity Hybrid Learning Graph Model for Few-Shot Temporal Knowledge Graph Forecasting"
+  authors: "S. Fan, H. Nie, R. Wang, Q. Yao, <u>H. Du</u>, Y. Liu and Z. Wang*"
+  pdf: "https://link.springer.com/chapter/10.1007/978-981-97-5562-2_22"
+  # image: ""
+  tags:
+    - "2024"
+    - "conference"
+    - "DASFAA"
+
+- year: 2022
+  type: journal
+  venue: 中国科学信息科学
+  venue_short: "[中国科学: 信息科学]"
+  venue_full: "中国科学: 信息科学"
+  title: "基于多尺度空洞卷积的知识图谱表示方法"
+  authors: "<u>杜昊桐</u>, 王震*, 聂弘毅, 姚权铭*, 李学龙"
+  pdf: "https://www.sciengine.com/SSI/doi/10.1360/SSI-2021-0111"
+  # image: ""
+  tags:
+    - "2022"
+    - "journal"
+    - "中国科学信息科学"
+
+- year: 2022
+  type: conference
+  venue: EMNLP
+  venue_short: "[EMNLP Findings]"
+  venue_full: "Findings of the Association for Computational Linguistics: EMNLP 2022"
+  title: "Search to Pass Messages for Temporal Knowledge Graph Completion"
+  authors: "Z. Wang, <u>H. Du</u>*, Q. Yao* and X. Li"
+  pdf: "https://aclanthology.org/2022.findings-emnlp.458/"
+  code: "https://github.com/striderdu/SPA"
+  # image: ""
+  tags:
+    - "2022"
+    - "conference"
+    - "EMNLP"
+

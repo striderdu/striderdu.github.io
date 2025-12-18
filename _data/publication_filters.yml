@@ -1,0 +1,61 @@
+# 论文筛选配置
+# 用于配置筛选菜单中的选项和数量
+
+# 年份筛选（会自动根据论文数据生成，这里只是示例）
+years:
+  - 2026
+  - 2025
+  - 2024
+  - 2023
+  - 2022
+  - 2021
+  - 2020
+  - 2019
+  - 2018
+  - 2017
+  - 2016
+  - 2015
+
+# 类型筛选
+types:
+  - name: journal
+    label: Journal
+  - name: conference
+    label: Conference
+  - name: patent
+    label: Patent
+
+# 会议筛选
+conferences:
+  - DASFFA
+  - PAKDD
+  - AAAI
+  - SIGIR
+  - IJCNN
+  - CIKM
+  - ICDM
+  - IJCAI
+  - WWW
+  - COLING
+  - BIGDATA
+  - WISE
+  - NAACL
+
+# 期刊筛选
+journals:
+  - TKDD
+  - TC
+  - IS
+  - TKDE
+  - DSPR
+  - FCS
+  - SCIS
+  - TITS
+  - FGCS
+  - CC
+  - NC
+  - KBS
+  - TSAS
+  - TPDS
+  - JAIR
+

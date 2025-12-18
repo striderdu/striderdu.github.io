@@ -1,0 +1,125 @@
+---
+layout: default
+custom_style: |
+  .profile-link {
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+  }
+  .profile-link:hover {
+    color: #337ab7;
+    text-decoration: underline;
+  }
+  body {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .container {
+    margin-bottom: 0;
+  }
+---
+
+<div class="container" style="padding-bottom: 0 !important; margin-bottom: 0 !important;">
+  <div class="row" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <div class="col-xs-12 col-md-4">
+      <div style="padding-bottom:20px; padding-top:35px">
+        <img src="{{ site.data.profile.photo | relative_url }}" width="200" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        <h3 style="margin-top: 20px; margin-bottom: 8px; font-size: 1.5em; font-weight: 600; color: #2c3e50;">
+          <span style="margin-right: 15px;">{{ site.data.profile.name_en }}</span>
+          <span style="color: #555;">{{ site.data.profile.name_cn }}</span>
+        </h3>
+        <div style="margin-bottom: 15px; color: #666; font-size: 0.95em;">{{ site.data.profile.title }}</div>
+        <div style="margin-bottom: 12px;">
+          <a href="{{ site.data.profile.school_url }}" style="color: #337ab7; text-decoration: none;">{{ site.data.profile.school }}</a><br>
+          <a href="{{ site.data.profile.university_url }}" style="color: #337ab7; text-decoration: none;">{{ site.data.profile.university }}</a>
+        </div>
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e0e0e0;">
+          <div style="margin-bottom: 8px; line-height: 1.6;">
+            <span style="margin-right: 10px; width: 20px; display: inline-block; text-align: center; color: #666;"><i class="fas fa-envelope"></i></span>
+            <span style="color: #333;">{{ site.data.profile.email }}</span>
+          </div>
+          {% if site.data.profile.email2 %}
+          <div style="margin-bottom: 8px; line-height: 1.6;">
+            <span style="margin-right: 10px; width: 20px; display: inline-block; text-align: center;"></span>
+            <span style="color: #333;">{{ site.data.profile.email2 }}</span>
+          </div>
+          {% endif %}
+          {% if site.data.profile.google_scholar %}
+          <div style="margin-bottom: 8px; line-height: 1.6;">
+            <span style="margin-right: 10px; width: 20px; display: inline-block; text-align: center; color: #666;"><i class="fas fa-graduation-cap"></i></span>
+            <a href="{{ site.data.profile.google_scholar }}" target="_blank" class="profile-link">Google Scholar</a>
+          </div>
+          {% endif %}
+          {% if site.data.profile.github %}
+          <div style="margin-bottom: 8px; line-height: 1.6;">
+            <span style="margin-right: 10px; width: 20px; display: inline-block; text-align: center; color: #666;"><i class="fab fa-github"></i></span>
+            <a href="{{ site.data.profile.github }}" target="_blank" class="profile-link">Github</a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-xs-12 col-md-8" itemprop="description">
+      <div style="padding-top:55px; line-height: 1.8; color: #444;">{{ site.data.profile.bio | markdownify }}</div>
+      
+      <h4 style="padding-top:30px; margin-bottom: 10px; color: #d32f2f; font-weight: 600; border-bottom: 2px solid #d32f2f; padding-bottom: 6px; display: inline-block;">News</h4>
+      <ul style="margin-top: 10px; margin-bottom: 0; padding-left: 20px; line-height: 1.7;">
+        {% for news in site.data.news %}
+          <li style="margin-bottom: 8px; color: #444;">
+            {% if news.month %}
+              <span style="color: #666; font-weight: 500;">[{{ news.year }}-{% if news.month < 10 %}0{% endif %}{{ news.month }}]</span> {{ news.content }}
+            {% else %}
+              <span style="color: #666; font-weight: 500;">[{{ news.year }}]</span> {{ news.content }}
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+      
+      {% comment %}
+      <h4 style="padding-top:55px"><font color="red">Academic Awards</font><br></h4>
+      <ul>
+        {% for award in site.data.awards %}
+          <li>[{{ award.year }}] {{ award.content }}</li>
+        {% endfor %}
+      </ul>
+      <br><br><br>
+      {% endcomment %}
+    </div>
+    
+    {% comment %}
+    <div class="col-xs-12 col-md-12" itemprop="description">
+      <h4 style="padding-top:55px"><font color="red">Selected Professional Services</font><br></h4>
+      <ul>
+        {% for service in site.data.services %}
+          <li>{{ service.number }}. {{ service.content }}</li>
+        {% endfor %}
+      </ul>
+      
+      <h4 style="padding-top:55px"><font color="red">Books</font><br></h4>
+      <ul>
+        {% for book in site.data.books %}
+          <li>{{ book.number }}. {{ book.content }} <a href="{{ book.link }}">购买点击此处</a></li>
+        {% endfor %}
+      </ul>
+      
+      <br /><br />
+      <p>Total Visits: <span id="busuanzi_value_site_pv"></span> Hits</p>
+    </div>
+    {% endcomment %}
+  </div>
+</div>
+<style>
+  .container:last-of-type {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .row:last-child {
+    margin-bottom: 0 !important;
+  }
+</style>
+
+{% comment %}
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+{% endcomment %}
+

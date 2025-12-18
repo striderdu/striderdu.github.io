@@ -1,0 +1,39 @@
+# 网站基本信息
+title: Haotong Du's Homepage
+description: 1
+navbar_title: "Haotong Du"  # 导航栏左上角显示的标题
+baseurl: ""  # 如果仓库名不是 username.github.io，需要设置 baseurl
+url: "https://striderdu.github.io"  # 替换为你的 GitHub Pages 地址
+
+# 导航菜单配置
+navigation:
+  - title: Home
+    url: /
+  - title: Publication
+    url: /publication.html
+  - title: Experience
+    url: /experience.html
+  # - title: Members
+  #   url: /people.html
+
+# 插件（GitHub Pages 支持的插件）
+plugins:
+  - jekyll-feed
+
+# 排除文件（不需要 Jekyll 处理的文件）
+exclude:
+  - README.md
+  - SETUP.md
+  - PUBLICATION_GUIDE.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .gitignore
+  - .DS_Store
+  - Thumbs.db
+
+# 包含文件（需要处理的文件）
+include:
+  - _pages
+

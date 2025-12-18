@@ -1,0 +1,20 @@
+name: "Haotong Du"
+name_en: "Haotong Du"
+name_cn: "杜昊桐"
+title: "Ph.D. candidate"
+school: "School of Computer Science"
+school_url: "https://jsj.nwpu.edu.cn/enweb/HOME.htm"
+university: "Northwestern Polytechnical University"
+university_url: "https://en.nwpu.edu.cn/"
+office: "Room 739, Yi Building, Youyi Campus"
+email: "duhaotong AT mail DOT nwpu DOT edu DOT cn"
+google_scholar: "https://scholar.google.com/citations?user=3-7UF88AAAAJ&hl=zh-CN"
+github: "https://github.com/striderdu"
+photo: "/img/duhaotong.png"
+bio: |
+  I am a Ph.D. candidate at the School of Computer Science, Northwestern Polytechnical University, advised by [Prof. Zhen Wang](https://iopen.nwpu.edu.cn/info/1329/1369.htm).
+  And I am also a visiting student of LARS Group, advised by [Dr. Quanming Yao](https://lars-group.github.io/).
+  Before this, I obtained my bachelor and master degree at Northwestern Polytechnical University.
+  
+  My research interests include knowledge graph reasoning, recommendation systems, and neural architecture search.
+
