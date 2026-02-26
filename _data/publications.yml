@@ -15,6 +15,20 @@
 
 - year: 2026
   type: conference
+  venue: PAKDD
+  venue_short: "[PAKDD]"
+  venue_full: "PAKDD '26: Pacific Asia Conference on Knowledge Discovery and Data Mining"
+  title: "Distillation-based Scenario-Adaptive Mixture-of-Experts for the Matching Stage of Multi-scenario Recommendation"
+  authors: "R. Wang, S. Guo, <u>H. Du</u> and Q. Yao*"
+  pdf: ""
+  # image: ""
+  tags:
+    - "2026"
+    - "conference"
+    - "PAKDD"
+
+- year: 2026
+  type: conference
   venue: AAAI
   venue_short: "[AAAI]"
   venue_full: "AAAI '26: Association for the Advancement of Artificial Intelligence"
