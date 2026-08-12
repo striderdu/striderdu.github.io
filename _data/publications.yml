@@ -11,7 +11,19 @@
 # - code: 代码链接（外部链接，可选）
 # - image: 图片路径（相对于figures目录）
 # - tags: 分类标签数组（用于筛选，如年份、类型、会议名等）
-
+- year: 2026
+  type: conference
+  venue: CIKM
+  venue_short: "[CIKM]"
+  venue_full: "CIKM '26: ACM International Conference on Information and Knowledge Management"
+  title: "Asymmetric Privileged Distillation for Weakly Supervised Video Anomaly Detection"
+  authors: "X. Li, <u>H. Du</u>, B. Chen, X. Li and C. Gao*"
+  pdf: ""
+  # image: ""
+  tags:
+    - "2026"
+    - "conference"
+    - "CIKM"
 
 - year: 2026
   type: conference

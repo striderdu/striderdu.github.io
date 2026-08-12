@@ -1,4 +1,8 @@
 - year: 2026
+  month: 8
+  content: "Our work on <b>Video Anomaly Detection</b> has been accepted to <b>CIKM 2026</b>!"
+
+- year: 2026
   month: 2
   content: "Our work on <b>Multi-scenario Recommendation</b> has been accepted to <b>PAKDD 2026</b>!"
 
