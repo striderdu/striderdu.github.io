@@ -12,6 +12,20 @@
 # - image: 图片路径（相对于figures目录）
 # - tags: 分类标签数组（用于筛选，如年份、类型、会议名等）
 - year: 2026
+  type: journal
+  venue: CIKM
+  venue_short: "[NN]"
+  venue_full: "Neural Networks"
+  title: "Adaptive Multi-Scenario Matching through Uncertainty-Aware Heterogeneous User Modeling"
+  authors: "R. Wang, <u>H. Du*</u>, Q. Yao and Y. Wang*"
+  pdf: ""
+  # image: ""
+  tags:
+    - "2026"
+    - "journal"
+    - "NN"
+
+- year: 2026
   type: conference
   venue: CIKM
   venue_short: "[CIKM]"
