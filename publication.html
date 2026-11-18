@@ -35,13 +35,29 @@ custom_style: |
   .venueInfo{
   }
 custom_script: |
-  var allTypes = new Array('machine-learning', 'data-mining')
   function showAllPublication() {
-    $(".publication").show("slow");
+    showContentWithType('all');
   }
   function showContentWithType(typeName) {
-    $(".publication").hide("slow");
-    $("." + typeName).show("slow");
+    var visibleCount = 0;
+    $(".publication").each(function () {
+      var matches = typeName === 'all' || this.classList.contains(typeName);
+      $(this).toggle(matches);
+      if (matches) visibleCount += 1;
+    });
+    $(".publication-year").each(function () {
+      $(this).toggle($(this).find('.publication').filter(function () {
+        return this.style.display !== 'none';
+      }).length > 0);
+    });
+    $("#publication-empty").toggle(visibleCount === 0);
+    $("#publication-filters > li").removeClass('active');
+    $("[data-publication-filter]").each(function () {
+      var selected = this.getAttribute('data-publication-filter') === typeName;
+      $(this).parent().toggleClass('active', selected);
+      if (selected) this.setAttribute('aria-current', 'true');
+      else this.removeAttribute('aria-current');
+    });
   }
 ---
 
@@ -50,18 +66,49 @@ custom_script: |
     <!-- Filters -->
     <div class="panel panel-default">
       <div class="panel-heading">
-        <ul class="nav nav-pills" role="tablist">
+        <ul class="nav nav-pills" id="publication-filters">
           <h4>Filters:</h4>
           <li role="presentation" class="dropdown active">
-            <a class="dropdown-toggle" onclick="javascript:showAllPublication();" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">All 
+            <a class="dropdown-toggle" data-publication-filter="all" aria-current="true" onclick="javascript:showAllPublication();" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">All
             <span class="badge">{{ site.data.publications.size }}</span></a>
             <ul class="dropdown-menu">
               <li><a href="https://scholar.google.com/citations?hl=en&user=R25rbyQAAAAJ">Google Scholar (citations)</a></li>
               <li><a href="https://dblp.uni-trier.de/pers/hd/p/Peng:Hao">DBLP</a></li>
             </ul>
           </li>
+          {% assign conference_papers = site.data.publications | where: "type", "conference" %}
+          {% assign journal_papers = site.data.publications | where: "type", "journal" %}
+          {% assign ccf_papers = conference_papers | concat: journal_papers %}
+          {% assign ccf_ranks = "A,B,C" | split: "," %}
+          {% for rank in ccf_ranks %}
+            {% assign ranked_papers = ccf_papers | where: "ccf_rank", rank %}
+            <li role="presentation">
+              <a href="#" data-publication-filter="ccf-{{ rank | downcase }}" onclick="showContentWithType('ccf-{{ rank | downcase }}'); return false;">CCF {{ rank }} <span class="badge">{{ ranked_papers.size }}</span></a>
+            </li>
+          {% endfor %}
+          {% assign indexing_labels = "SCI,EI" | split: "," %}
+          {% assign indexing_reviewed_count = 0 %}
+          {% assign indexing_pending_count = 0 %}
+          {% for pub in site.data.publications %}
+            {% if pub.indexing %}
+              {% assign indexing_reviewed_count = indexing_reviewed_count | plus: 1 %}
+            {% else %}
+              {% assign indexing_pending_count = indexing_pending_count | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+          {% for index_name in indexing_labels %}
+            {% assign indexed_count = 0 %}
+            {% for pub in site.data.publications %}
+              {% if pub.indexing contains index_name %}
+                {% assign indexed_count = indexed_count | plus: 1 %}
+              {% endif %}
+            {% endfor %}
+            <li role="presentation"{% if indexing_reviewed_count == 0 %} class="disabled"{% endif %}>
+              <a href="#" data-publication-filter="index-{{ index_name | downcase }}" {% if indexing_reviewed_count == 0 %}aria-disabled="true" onclick="return false;"{% else %}onclick="showContentWithType('index-{{ index_name | downcase }}'); return false;"{% endif %}>{{ index_name }} <span class="badge">{% if indexing_reviewed_count == 0 %}&mdash;{% else %}{{ indexed_count }}{% endif %}</span></a>
+            </li>
+          {% endfor %}
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" onclick="javascript:showContentWithType('2017'); javascript:showAllPublication();" aria-haspopup="true" aria-expanded="true">By Year<span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">By Year<span class="caret"></span></a>
             <ul class="dropdown-menu">
               {% assign years = site.data.publications | group_by: "year" | sort: "name" | reverse %}
               {% for year_group in years %}
@@ -70,7 +117,7 @@ custom_script: |
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="javascript:showContentWithType('conference');" role="button" aria-haspopup="true" aria-expanded="true">By Type <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">By Type <span class="caret"></span></a>
             <ul class="dropdown-menu">
               {% assign journals = site.data.publications | where: "type", "journal" %}
               {% assign conferences = site.data.publications | where: "type", "conference" %}
@@ -81,7 +128,7 @@ custom_script: |
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="javascript:showContentWithType('conference');" role="button" aria-haspopup="true" aria-expanded="true">By Conference <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">By Conference <span class="caret"></span></a>
             <ul class="dropdown-menu">
               {% assign conferences = site.data.publications | where: "type", "conference" | group_by: "venue" | sort: "name" %}
               {% for conf_group in conferences %}
@@ -90,7 +137,7 @@ custom_script: |
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="javascript:showContentWithType('journal');" role="button" aria-haspopup="true" aria-expanded="true">By Journal <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">By Journal <span class="caret"></span></a>
             <ul class="dropdown-menu">
               {% assign journals = site.data.publications | where: "type", "journal" | group_by: "venue" | sort: "name" %}
               {% for journal_group in journals %}
@@ -99,9 +146,11 @@ custom_script: |
             </ul>
           </li>
         </ul>
+        <p class="text-muted" style="margin: 10px 0 0;" id="indexing-note">SCI / EI counts are based on journal and proceedings coverage, including all papers listed here, rather than individual indexing records. A paper covered by both is counted in each category.{% if indexing_pending_count > 0 %} {{ indexing_pending_count }} pending classification.{% endif %}</p>
       </div>
       <div class="panel-body">
         {% include publications_list.html %}
+        <p id="publication-empty" class="text-muted" role="status" style="display: none;">No publications match this filter.</p>
       </div>
     </div>
   </div>

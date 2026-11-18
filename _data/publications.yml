@@ -3,6 +3,10 @@
 # - year: 发表年份
 # - type: 类型 (journal/conference/patent)
 # - venue: 会议/期刊名称（用于分类）
+# - ccf_rank: CCF等级（A/B/C，适用于收录期刊和正式会议长文；其他论文省略）
+# - indexing: 按期刊/论文集收录范围分类，例如 [SCI, EI]；未列入两类填 []，待核实省略
+# 统计含本站所有列出论文，不表示逐篇已取得检索记录；SCI口径包含SCIE。
+# EI依据Elsevier官方来源表（2026-08-07），见PUBLICATION_GUIDE.md。
 # - venue_short: 会议/期刊简称（显示在列表中）
 # - venue_full: 会议/期刊全称（显示在论文信息中）
 # - title: 论文标题
@@ -13,7 +17,10 @@
 # - tags: 分类标签数组（用于筛选，如年份、类型、会议名等）
 - year: 2026
   type: journal
-  venue: CIKM
+  venue: NN
+  indexing: [SCI, EI]
+  # CCF国际期刊目录：https://www.ccf.org.cn/Academic_Evaluation/AI/
+  ccf_rank: B
   venue_short: "[NN]"
   venue_full: "Neural Networks"
   title: "Adaptive Multi-Scenario Matching through Uncertainty-Aware Heterogeneous User Modeling"
@@ -28,6 +35,8 @@
 - year: 2026
   type: conference
   venue: CIKM
+  indexing: [EI]
+  ccf_rank: B
   venue_short: "[CIKM]"
   venue_full: "CIKM '26: ACM International Conference on Information and Knowledge Management"
   title: "Asymmetric Privileged Distillation for Weakly Supervised Video Anomaly Detection"
@@ -42,6 +51,8 @@
 - year: 2026
   type: conference
   venue: PAKDD
+  indexing: [EI]
+  ccf_rank: C
   venue_short: "[PAKDD]"
   venue_full: "PAKDD '26: Pacific Asia Conference on Knowledge Discovery and Data Mining"
   title: "Distillation-based Scenario-Adaptive Mixture-of-Experts for the Matching Stage of Multi-scenario Recommendation"
@@ -56,6 +67,8 @@
 - year: 2026
   type: conference
   venue: AAAI
+  indexing: [EI]
+  ccf_rank: A
   venue_short: "[AAAI]"
   venue_full: "AAAI '26: Association for the Advancement of Artificial Intelligence"
   title: "RABot: Reinforcement-Guided Graph Augmentation for Imbalanced and Noisy Social Bot Detection"
@@ -70,6 +83,8 @@
 - year: 2025
   type: conference
   venue: KDD
+  indexing: [EI]
+  ccf_rank: A
   venue_short: "[KDD]"
   venue_full: "KDD '25: ACM SIGKDD Conference on Knowledge Discovery and Data Mining"
   title: "PERSCEN: Learning Personalized Interaction Pattern and Scenario Preference for Multi-Scenario Matching"
@@ -85,6 +100,9 @@
 - year: 2025
   type: journal
   venue: Neurocomputing
+  indexing: [SCI, EI]
+  # CCF国际期刊目录（2026年第七版）：https://www.ccf.org.cn/Academic_Evaluation/AI/
+  ccf_rank: C
   venue_short: "[Neurocomputing]"
   venue_full: "Neurocomputing"
   title: "Search to Integrate Multi-level Heuristics with Graph Neural Networks for Multi-relational Link Prediction"
@@ -100,6 +118,8 @@
 - year: 2025
   type: conference
   venue: CIKM
+  indexing: [EI]
+  ccf_rank: B
   venue_short: "[CIKM]"
   venue_full: "CIKM '25: ACM International Conference on Information and Knowledge Management"
   title: "Enhancing Information Diffusion Prediction via Multiple Granularity Hypergraphs and Position-aware Sequence Model"
@@ -114,6 +134,8 @@
 - year: 2025
   type: conference
   venue: CIKM
+  indexing: [EI]
+  ccf_rank: B
   venue_short: "[CIKM]"
   venue_full: "CIKM '25: ACM International Conference on Information and Knowledge Management"
   title: "CAGCL: A Community-Aware Graph Contrastive Learning Model for Social Bot Detection"
@@ -128,6 +150,8 @@
 - year: 2025
   type: conference
   venue: CIKM
+  indexing: [EI]
+  ccf_rank: B
   venue_short: "[CIKM]"
   venue_full: "CIKM '25: ACM International Conference on Information and Knowledge Management"
   title: "MFAE: Multimodal Feature Adaptive Enhancement for Fake News Video Detection"
@@ -142,6 +166,7 @@
 - year: 2025
   type: conference
   venue: ICSI
+  indexing: [EI]
   venue_short: "[ICSI]"
   venue_full: "International Conference on Swarm Intelligence (ICSI 2025)"
   title: "Incremental Update Strategy for Continuous Action Iterated Hierarchical Dilemma"
@@ -156,6 +181,8 @@
 - year: 2024
   type: conference
   venue: NeurIPS
+  indexing: [EI]
+  ccf_rank: A
   venue_short: "[NeurIPS]"
   venue_full: "Advances in Neural Information Processing Systems 37 (NeurIPS 2024)"
   title: "Customized Subgraph Selection and Encoding for Drug-drug Interaction Prediction"
@@ -171,6 +198,8 @@
 - year: 2024
   type: conference
   venue: DASFAA
+  indexing: [EI]
+  ccf_rank: B
   venue_short: "[DASFAA]"
   venue_full: "International Conference on Database Systems for Advanced Applications (DASFAA 2024)"
   title: "Relation-Entity Hybrid Learning Graph Model for Few-Shot Temporal Knowledge Graph Forecasting"
@@ -185,6 +214,8 @@
 - year: 2022
   type: journal
   venue: 中国科学信息科学
+  indexing: []
+  # 本站不将《中国科学：信息科学》计入CCF分级筛选。
   venue_short: "[中国科学: 信息科学]"
   venue_full: "中国科学: 信息科学"
   title: "基于多尺度空洞卷积的知识图谱表示方法"
@@ -199,6 +230,7 @@
 - year: 2022
   type: conference
   venue: EMNLP
+  indexing: [EI]
   venue_short: "[EMNLP Findings]"
   venue_full: "Findings of the Association for Computational Linguistics: EMNLP 2022"
   title: "Search to Pass Messages for Temporal Knowledge Graph Completion"

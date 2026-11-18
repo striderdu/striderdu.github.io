@@ -6,10 +6,15 @@
 {% assign years = site.data.publications | group_by: "year" | sort: "name" | reverse %}
 
 {% for year_group in years %}
-  <h3>{{ year_group.name }}</h3>
+  <section class="publication-year" aria-labelledby="publication-year-{{ year_group.name }}">
+  <h3 id="publication-year-{{ year_group.name }}">{{ year_group.name }}</h3>
   <ul class="list-group">
     {% for pub in year_group.items %}
-      <li class="list-group-item {{ pub.type }} publication {{ pub.year }} {{ pub.type }} {{ pub.venue }} {% for tag in pub.tags %}{{ tag }} {% endfor %}">
+      {% assign ccf_rank = nil %}
+      {% if pub.type == 'conference' or pub.type == 'journal' %}
+        {% assign ccf_rank = pub.ccf_rank %}
+      {% endif %}
+      <li class="list-group-item {{ pub.type }} publication {{ pub.year }} {{ pub.type }} {{ pub.venue }} {% if ccf_rank %}ccf-{{ ccf_rank | downcase }} {% endif %}{% if pub.indexing contains 'SCI' %}index-sci {% endif %}{% if pub.indexing contains 'EI' %}index-ei {% endif %}{% for tag in pub.tags %}{{ tag }} {% endfor %}">
         <table style="width: 100%">
           <tbody>
             <tr>
@@ -49,5 +54,6 @@
       </li>
     {% endfor %}
   </ul>
+  </section>
 {% endfor %}
 
